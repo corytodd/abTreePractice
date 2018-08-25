@@ -932,11 +932,19 @@ angular.module('abTreePractice', ['d3', 'Enums', 'Tree'])
               var nodeVal = selectedNode.value;
               valStr = (nodeVal == null) ? '' : nodeVal.toString();
               if ((lastKeyDown > 47 && lastKeyDown < 58) // number keys
-                  || lastKeyDown == 189 // minus dash
+                  || lastKeyDown == 189    // minus dash
+                  || lastKeyDown == 173    // subtract sign
                   || lastKeyDown == 190) { // decimal point
+                
+                    // Adjust '-', '.', and '-' to their respective ASCII values
+                    if(lastKeyDown == 189 || lastKeyDown == 190){
+                      lastKeyDown -= 144;
+                    } else if(lastKeyDown == 173) {
+                      lastKeyDown = 45;
+                    }
+
                 var leftSlice = valStr.slice(0, valCharIndex),
                     rightSlice = valStr.slice(valCharIndex, valStr.length),
-                    lastKeyDown = (lastKeyDown > 188) ? (lastKeyDown - 144) : lastKeyDown,
                     newNum = String.fromCharCode(lastKeyDown);
                 valStr = leftSlice + newNum + rightSlice;
                 selectedNode.value = valStr;
