@@ -1,4 +1,4 @@
-abTreePractice ([demo](http://alphabeta.alekskamko.com))
+abTreePractice ([demo](https://corytodd.github.io/abTreePractice/))
 ==============
 
 D3.js web app for visualizing and understanding the Alpha-Beta Pruning
